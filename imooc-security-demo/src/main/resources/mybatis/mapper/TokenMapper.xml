@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.imooc.dao.Userdao">
+
+    <resultMap id="UserEntity" type="com.imooc.dto.User">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="INTEGER" />
+        <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+        <result column="create_time" property="current1" jdbcType="INTEGER" />
+        <result column="current_2" property="current2" jdbcType="INTEGER" />
+        <result column="current_3" property="current3" jdbcType="INTEGER" />
+        <result column="watt_1" property="watt1" jdbcType="INTEGER" />
+        <result column="watt_2" property="watt2" jdbcType="INTEGER" />
+        <result column="watt_3" property="watt3" jdbcType="INTEGER" />
+        <result column="receive_time" property="receiveTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+
+
+    <insert id="insertToken" parameterType="TokenBeen">
+        insert into vulnova_token(user_id,token) values (#{user_id},#{token})
+    </insert>
+
+    <select id="findByToken" resultType="TokenBeen">
+        select * from vulnova_token where token=#{access_token}
+    </select>
+
+    <delete id="deleteToke">
+        delete from vulnova_token where user_id=#{user_id}
+    </delete>
+</mapper>
